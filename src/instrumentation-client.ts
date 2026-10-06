@@ -3,7 +3,10 @@
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 import * as Sentry from '@sentry/nextjs';
 
-if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
+if (
+  process.env.NEXT_PUBLIC_SENTRY_DISABLED !== 'true' &&
+  Boolean(process.env.NEXT_PUBLIC_SENTRY_DSN)
+) {
   Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
 

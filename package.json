@@ -7,17 +7,17 @@
     "url": "https://github.com/Kiranism"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3000 -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "cleanup": "node scripts/cleanup.js",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix && bun format",
+    "lint:fix": "oxlint --fix && npm run format",
     "lint:strict": "oxlint --deny-warnings",
     "format": "oxfmt --write . '!**/*.md' '!**/*.mdc' '!**/*.mdx' '!**/*.yml' '!**/*.yaml'",
     "format:check": "oxfmt --check . '!**/*.md' '!**/*.mdc' '!**/*.mdx' '!**/*.yml' '!**/*.yaml'",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "dependencies": {
     "@ai-sdk/react": "^4.0.47",

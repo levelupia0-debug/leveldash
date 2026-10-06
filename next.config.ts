@@ -3,7 +3,7 @@ import { withSentryConfig } from '@sentry/nextjs';
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {
-  output: process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -32,7 +32,11 @@ const baseConfig: NextConfig = {
 let configWithPlugins = baseConfig;
 
 // Conditionally enable Sentry configuration
-if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
+if (
+  process.env.NEXT_PUBLIC_SENTRY_DISABLED !== 'true' &&
+  Boolean(process.env.NEXT_PUBLIC_SENTRY_ORG) &&
+  Boolean(process.env.NEXT_PUBLIC_SENTRY_PROJECT)
+) {
   configWithPlugins = withSentryConfig(configWithPlugins, {
     org: process.env.NEXT_PUBLIC_SENTRY_ORG,
     project: process.env.NEXT_PUBLIC_SENTRY_PROJECT,

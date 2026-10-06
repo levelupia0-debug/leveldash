@@ -1,0 +1,7 @@
+{
+  "name": "Shadcn Dashboard",
+  "description": "Free, open source admin dashboard starter built with Next.js 16, shadcn/ui, Tailwind CSS, and TypeScript.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

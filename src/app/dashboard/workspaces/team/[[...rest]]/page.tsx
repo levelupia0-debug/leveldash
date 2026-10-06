@@ -1,7 +1,7 @@
 'use client';
 
 import PageContainer from '@/components/layout/page-container';
-import { OrganizationProfile } from '@clerk/nextjs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { teamInfoContent } from '@/config/infoconfig';
 
 export default function TeamPage() {
@@ -11,7 +11,17 @@ export default function TeamPage() {
       pageDescription='Manage your workspace team, members, roles, security and more.'
       infoContent={teamInfoContent}
     >
-      <OrganizationProfile />
+      <Card>
+        <CardHeader>
+          <CardTitle>Team Members</CardTitle>
+          <CardDescription>Workspace team members and roles</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className='text-sm text-muted-foreground'>
+            Current admin role active. All administrative permissions granted.
+          </p>
+        </CardContent>
+      </Card>
     </PageContainer>
   );
 }
